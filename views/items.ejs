@@ -8,5 +8,8 @@
 <body>
     <%- include('navbar') %>
     <h1>Items Page</h1>
+    <% items.map((item) => { %>
+        <p><%= item.name %></p>
+    <% }) %>
 </body>
 </html>
