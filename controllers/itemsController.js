@@ -9,6 +9,8 @@ async function getAddNewItems(req, res) {
     res.render("newItemsForm", {categories: categories});
 }
 
+
+
 module.exports = {
     getItems,
     getAddNewItems

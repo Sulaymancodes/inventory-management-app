@@ -10,6 +10,9 @@ async function getAllCategory() {
     return rows;
 }
 
+async function addItem(name, description, price, category) {
+    await pool.query("INSERT INTO items VALUES")
+}
 module.exports = {
     getAllItems,
     getAllCategory
