@@ -8,5 +8,10 @@
 <body>
     <%- include('navbar') %>
     <h1>New Categories Form Page</h1>
+    <form action="/addCategory" method="POST">
+        <label for="categoryName">Category Name:</label>
+        <input type="text" id="categoryName" name="categoryName"><br>
+        <button type="submit">Add Category</button>
+    </form>
 </body>
 </html>

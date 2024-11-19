@@ -8,5 +8,19 @@
 <body>
     <%- include('navbar') %>
     <h1>New Items Form Page</h1>
+    <form action="/addItem" method="POST">
+        <label for="itemName">Item Name:</label>
+        <input type="text" id="itemName" name="itemName"><br>
+        <label for="description">Description:</label>
+        <input type="text" id="description" name="description"><br>
+        <label for="price">Price:</label>
+        <input type="number" id="price" name="price"><br>
+        <p>Choose Your Category</p>
+        <% categories.map((category) => { %>
+            <input type="checkbox" name="<%= category.name %>" id="<%= category.name %>" value="<%= category.name %>" required>
+            <label for="<%= category.name %>"><%= category.name %></label><br>
+        <% }) %>
+        <button type="submit">Add Item</button>
+    </form>
 </body>
 </html>
