@@ -19,9 +19,24 @@ async function addItem(req, res) {
     }
 }
 
+async function getItem(req, res) {
+    try {
+        const itemId = req.params.id;
+        const categories = await db.getAllCategory()
+        const items = await db.getItem(itemId);
+        const item = items[0]
+        if (!item) {
+            res.render("404page");
+        }
+        res.render("updateItem", {item: item, categories: categories});
+    } catch (err) {
+        res.render("404page");
+    }
+}
 
 module.exports = {
     getItems,
     getAddNewItems,
-    addItem
+    addItem,
+    getItem
 }

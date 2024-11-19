@@ -8,8 +8,24 @@
 <body>
     <%- include('navbar') %>
     <h1>Items Page</h1>
-    <% items.map((item) => { %>
-        <p><%= item.name %></p>
-    <% }) %>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        <% items.map((item) => { %>
+            <tr>
+                <td><%= item.name %></td>
+                <td><%= item.description %></td>
+                <td><%= item.price %></td>
+                <td><a href="/<%= item.id %>/edit">Edit</a></td>
+                <td><a href="/<%= item.id %>/delete">Delete</a></td>
+            </tr>
+        <% }) %>
+    </table>
+    
 </body>
 </html>
