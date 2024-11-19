@@ -34,9 +34,21 @@ async function getItem(req, res) {
     }
 }
 
+async function updateItem(req, res) {
+    try {
+        const id = req.params.id;
+        const { itemName, description, price, categoryId } = req.body;
+        await db.updateItem(categoryId, itemName, description, price, id);
+        res.redirect("/items")
+    } catch (err) {
+        res.redirect("404page")
+    }
+}
+
 module.exports = {
     getItems,
     getAddNewItems,
     addItem,
-    getItem
+    getItem,
+    updateItem
 }
