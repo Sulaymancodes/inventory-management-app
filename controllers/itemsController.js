@@ -9,9 +9,19 @@ async function getAddNewItems(req, res) {
     res.render("newItemsForm", {categories: categories});
 }
 
+async function addItem(req, res) {
+    try {
+        const { itemName, description, price, categoryId } = req.body;
+        await db.addItem(categoryId, itemName, description, price);
+        res.redirect('/items');
+    } catch (err) {
+        res.render("404page");
+    }
+}
 
 
 module.exports = {
     getItems,
-    getAddNewItems
+    getAddNewItems,
+    addItem
 }
