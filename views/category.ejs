@@ -8,9 +8,16 @@
 <body>
     <%- include('navbar') %>
     <h1>Categories Page</h1>
-    <% categories.map((category) => { %> 
-        <p><%= category.name %></p>
-        <a href="/<%= category.id %>/deleteCategory">Delete</a>
-    <% }) %>
+    <% if (categories.length === 0) {%>
+        <h1>No Categories Found</h1>
+        <p>Click on the Link below to add a Category</p>
+        <a href="/addNewCategories">Add Category</a>
+    <%} else { %>
+        <% categories.map((category) => { %> 
+            <p><%= category.name %></p>
+            <a href="/<%= category.id %>/deleteCategory">Delete</a>
+        <% }) %>
+    <%} %> 
+    
 </body>
 </html>
