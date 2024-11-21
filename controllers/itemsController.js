@@ -56,11 +56,22 @@ async function searchItem(req, res) {
     } 
 }
 
+async function deleteItem(req, res) {
+    try {
+        const id = req.params.id;
+        await db.deleteItem(id);
+        res.redirect("/items");
+    } catch (err) {
+        res.render("404page");
+    }
+}
+
 module.exports = {
     getItems,
     getAddNewItems,
     addItem,
     getItem,
     updateItem,
-    searchItem
+    searchItem,
+    deleteItem
 }

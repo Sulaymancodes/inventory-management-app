@@ -12,6 +12,9 @@
         <input type="text" name="searchedItem">
         <button type="submit">Search</button>
     </form>
+    <% if (items.length === 0) { %>
+        <h1>No Items Found</h1>
+    <% }  else { %>
     <table>
         <tr>
             <th>Name</th>
@@ -26,10 +29,10 @@
                 <td><%= item.description %></td>
                 <td><%= item.price %></td>
                 <td><a href="/<%= item.id %>/edit">Edit</a></td>
-                <td><a href="/<%= item.id %>/delete">Delete</a></td>
+                <td><a href="/<%= item.id %>/deleteItem">Delete</a></td>
             </tr>
         <% }) %>
     </table>
-    
+    <% } %>
 </body>
 </html>

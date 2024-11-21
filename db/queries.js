@@ -25,7 +25,7 @@ async function searchedItem(name) {
 }
 
 async function deleteItem(id) {
-    await pool.query("DELETE FROM category WHERE id = $1", [id]);
+    await pool.query("DELETE FROM items WHERE id = $1", [id]);
 }
 
 async function addCategory(name) {
@@ -50,6 +50,7 @@ module.exports = {
     getItem,
     updateItem,
     searchedItem,
+    deleteItem,
     getAllCategory,
     addCategory,
     deleteCategory

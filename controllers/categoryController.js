@@ -22,9 +22,8 @@ async function addCategory(req, res) {
 async function deleteCategory(req, res) {
     try {
         const id = req.params.id;
-        const categories = await db.getAllCategory();
         await db.deleteCategory(id);
-        res.render("category", {categories:categories});
+        res.redirect("/categories")
     } catch (err) {
         res.render("404page");
     }
