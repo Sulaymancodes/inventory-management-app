@@ -3,38 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="/items.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <title>Items</title>
 </head>
-<body>
+<body class="items-page">
     <%- include('navbar') %>
-    <h1>Items Page</h1>
-    <form action="/searchedItems" method="POST">
-        <input type="text" name="searchedItem">
-        <button type="submit">Search</button>
-    </form>
-    <% if (items.length === 0) { %>
-        <h1>No Items Found</h1>
-        <p>Click on the Link below to add Items</p>
-        <a href="/addNewItems">Add Item</a>
-    <% }  else { %>
-    <table>
-        <tr>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Price</th>
-            <th>Edit</th>
-            <th>Delete</th>
-        </tr>
-        <% items.map((item) => { %>
-            <tr>
-                <td><%= item.name %></td>
-                <td><%= item.description %></td>
-                <td><%= item.price %></td>
-                <td><a href="/<%= item.id %>/edit">Edit</a></td>
-                <td><a href="/<%= item.id %>/deleteItem">Delete</a></td>
-            </tr>
-        <% }) %>
-    </table>
-    <% } %>
+    <main class="items-container">
+        <div class="items-header">
+            <h1 class="page-title">Items List</h1>
+            <form class="search-form" action="/searchedItems" method="POST">
+                <div class="search-wrapper">
+                    <input type="text" name="searchedItem" class="search-input" placeholder="Search items...">
+                    <button type="submit" class="search-button">Search</button>
+                </div>
+            </form>
+        </div>
+
+        <% if (items.length === 0) { %>
+            <div class="empty-state">
+                <h2 class="empty-title">No Items Found</h2>
+                <p class="empty-text">Click on the Link below to add Items</p>
+                <a href="/addNewItems" class="add-item-btn">Add Item</a>
+            </div>
+        <% } else { %>
+            <div class="table-container">
+                <table class="items-table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Price</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% items.map((item) => { %>
+                            <tr>
+                                <td><%= item.name %></td>
+                                <td><%= item.description %></td>
+                                <td class="price-cell">$<%= item.price %></td>
+                                <td class="actions-cell">
+                                    <div class="action-buttons">
+                                        <a href="/<%= item.id %>/edit" class="edit-btn">Edit</a>
+                                        <a href="/<%= item.id %>/deleteItem" class="delete-btn">Delete</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        <% }) %>
+                    </tbody>
+                </table>
+            </div>
+        <% } %>
+    </main>
+    <%- include('footer') %>
 </body>
 </html>

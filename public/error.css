@@ -1,0 +1,32 @@
+/* 404 Page Styling */
+.error-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+    background: var(--background-gradient);
+    background-color: var(--primary-color); /* Matches the site's general background */
+    color: #333;
+}
+
+.error-title {
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: #222; /* Slightly darker gray */
+}
+
+.error-link {
+    font-size: 16px;
+    color: white;
+    background-color: #333;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.error-link:hover {
+    background-color: #555;
+}

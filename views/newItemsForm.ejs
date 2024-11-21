@@ -3,26 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="/newItem.css">
     <title>Items</title>
+    
 </head>
 <body>
     <%- include('navbar') %>
-    <h1>New Items Form Page</h1>
-    <form action="/addItem" method="POST">
-        <label for="itemName">Item Name:</label>
-        <input type="text" id="itemName" name="itemName" required><br>
-        <label for="description">Description:</label>
-        <input type="text" id="description" name="description" required><br>
-        <label for="price">Price:</label>
-        <input type="number" id="price" name="price" step="0.01" required><br>
-        <p>Choose Your Category</p>
-        <select id="category" name="categoryId" required>
-            <% categories.forEach((category) => { %>
-                <option value="<%= category.id %>"><%= category.name %></option>
-            <% }) %>
-        </select><br><br>
-
-        <button type="submit">Add Item</button>
-    </form>
+    <main class="form-container">
+        <h1 class="form-title">New Items Form Page</h1>
+        <form action="/addItem" method="POST" class="item-form">
+            <div class="form-group">
+                <label for="itemName" class="form-label">Item Name:</label>
+                <input type="text" id="itemName" name="itemName" class="form-input" required>
+            </div>
+            <div class="form-group">
+                <label for="description" class="form-label">Description:</label>
+                <input type="text" id="description" name="description" class="form-input" required>
+            </div>
+            <div class="form-group">
+                <label for="price" class="form-label">Price:</label>
+                <input type="number" id="price" name="price" class="form-input" step="0.01" required>
+            </div>
+            <div class="form-group">
+                <p class="form-label">Choose Your Category</p>
+                <select id="category" name="categoryId" class="form-select" required>
+                    <% categories.forEach((category) => { %>
+                        <option value="<%= category.id %>"><%= category.name %></option>
+                    <% }) %>
+                </select>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="form-button">Add Item</button>
+            </div>
+        </form>
+    </main>
+    <%- include('footer') %>
 </body>
 </html>

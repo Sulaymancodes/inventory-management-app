@@ -1,0 +1,244 @@
+/* Items Page Styles */
+.items-page {
+    background: var(--background-gradient);
+    min-height: 100vh;
+}
+
+.items-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.items-header {
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.page-title {
+    color: var(--text-light);
+    font-size: 2.5rem;
+    font-weight: 600;
+}
+
+/* Search Form Styles */
+.search-form {
+    flex-grow: 1;
+    max-width: 500px;
+}
+
+.search-wrapper {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.search-input {
+    flex-grow: 1;
+    padding: 0.8rem 1.2rem;
+    border: none;
+    border-radius: 30px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    color: var(--text-light);
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+.search-input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.search-input:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 0 0 2px var(--accent-color);
+}
+
+.search-button {
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 30px;
+    background: var(--accent-color);
+    color: var(--text-dark);
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.search-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Table Styles */
+.table-container {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+}
+
+.items-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    color: var(--text-light);
+}
+
+.items-table thead {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.items-table th {
+    padding: 1.2rem 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+}
+
+.items-table td {
+    padding: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.items-table tbody tr {
+    transition: var(--transition);
+}
+
+.items-table tbody tr:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.price-cell {
+    font-weight: 500;
+    color: var(--accent-color);
+}
+
+.actions-cell {
+    width: 200px;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.edit-btn, .delete-btn {
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.edit-btn {
+    background: var(--primary-color);
+    color: var(--text-light);
+}
+
+.delete-btn {
+    background: #E76F51;
+    color: var(--text-light);
+}
+
+.edit-btn:hover, .delete-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Empty State Styles */
+.empty-state {
+    text-align: center;
+    padding: 4rem 2rem;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    color: var(--text-light);
+}
+
+.empty-title {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+.empty-text {
+    margin-bottom: 2rem;
+    opacity: 0.8;
+}
+
+.add-item-btn {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background: var(--accent-color);
+    color: var(--text-dark);
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.add-item-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .items-header {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .page-title {
+        text-align: center;
+        font-size: 2rem;
+    }
+
+    .table-container {
+        overflow-x: auto;
+    }
+
+    .items-table th,
+    .items-table td {
+        padding: 0.8rem;
+    }
+
+    .action-buttons {
+        flex-direction: column;
+        gap: 0.3rem;
+    }
+
+    .edit-btn,
+    .delete-btn {
+        text-align: center;
+    }
+}
+
+/* Optional: Add animation for table rows */
+.items-table tbody tr {
+    animation: fadeIn 0.3s ease-out forwards;
+    opacity: 0;
+}
+
+.items-table tbody tr:nth-child(1) { animation-delay: 0.1s; }
+.items-table tbody tr:nth-child(2) { animation-delay: 0.2s; }
+.items-table tbody tr:nth-child(3) { animation-delay: 0.3s; }
+/* Add more if needed */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

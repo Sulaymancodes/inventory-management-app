@@ -3,21 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="/category.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <title>Categories</title>
 </head>
-<body>
+<body class="categories-page">
     <%- include('navbar') %>
-    <h1>Categories Page</h1>
-    <% if (categories.length === 0) {%>
-        <h1>No Categories Found</h1>
-        <p>Click on the Link below to add a Category</p>
-        <a href="/addNewCategories">Add Category</a>
-    <%} else { %>
-        <% categories.map((category) => { %> 
-            <p><%= category.name %></p>
-            <a href="/<%= category.id %>/deleteCategory">Delete</a>
-        <% }) %>
-    <%} %> 
-    
+    <main class="categories-container">
+        <div class="categories-header">
+            <h1 class="page-title">Categories</h1>
+            <a href="/addNewCategories" class="add-category-btn">+ Add Category</a>
+        </div>
+
+        <% if (categories.length === 0) { %>
+            <div class="empty-state">
+                <h2 class="empty-title">No Categories Found</h2>
+                <p class="empty-text">Add your first category to get started</p>
+                <a href="/addNewCategories" class="add-category-btn-large">Add Category</a>
+            </div>
+        <% } else { %>
+            <div class="categories-grid">
+                <% categories.map((category) => { %>
+                    <div class="category-card">
+                        <div class="category-content">
+                            <h3 class="category-name"><%= category.name %></h3>
+                            <a href="/<%= category.id %>/deleteCategory" class="delete-category-btn">
+                                Delete
+                            </a>
+                        </div>
+                    </div>
+                <% }) %>
+            </div>
+        <% } %>
+    </main>
+    <%- include('footer') %>
 </body>
 </html>
