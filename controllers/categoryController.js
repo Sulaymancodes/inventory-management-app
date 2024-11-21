@@ -13,7 +13,7 @@ async function addCategory(req, res) {
     try {
         const { categoryName } = req.body;
         await db.addCategory(categoryName);
-        res.redirect("/category");
+        res.redirect("/categories");
     } catch (err) {
         res.redirect("404page");
     }
