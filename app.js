@@ -11,6 +11,9 @@ app.set("view engine", "ejs");
 
 app.use('/', itemsRouter);
 app.use('/', categoryRouter);
+app.use('/404page', (req, res) => {
+    res.render('404page');
+})
 app.use('/', (req, res) => {
     res.render('index');
 });

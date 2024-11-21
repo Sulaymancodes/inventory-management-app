@@ -7,5 +7,6 @@ itemsRouter.get("/addNewItems", itemsController.getAddNewItems);
 itemsRouter.post("/addItem", itemsController.addItem);
 itemsRouter.get("/:id/edit", itemsController.getItem);
 itemsRouter.post("/:id/edit", itemsController.updateItem);
+itemsRouter.post("/searchedItems", itemsController.searchItem);
 
 module.exports = itemsRouter;

@@ -41,8 +41,19 @@ async function updateItem(req, res) {
         await db.updateItem(categoryId, itemName, description, price, id);
         res.redirect("/items")
     } catch (err) {
-        res.redirect("404page")
+        res.render("404page");
     }
+}
+
+async function searchItem(req, res) {
+    try {
+        const { searchedItem } = req.body;
+        const items = await db.searchedItem(searchedItem);
+        res.render("items", {items:items})
+    } catch (err) {
+        console.log(err)
+        res.render("404page");
+    } 
 }
 
 module.exports = {
@@ -50,5 +61,6 @@ module.exports = {
     getAddNewItems,
     addItem,
     getItem,
-    updateItem
+    updateItem,
+    searchItem
 }

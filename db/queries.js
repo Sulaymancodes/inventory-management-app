@@ -19,6 +19,11 @@ async function updateItem(category_id, name, description, price, id) {
     await pool.query("UPDATE items SET category_id = $1, name = $2, description = $3, price = $4 WHERE id = $5", [category_id, name, description, price, id]);
 }
 
+async function searchedItem(name) {
+    const { rows } = await pool.query("SELECT * FROM items WHERE name ILIKE $1", [`${name}%`]);
+    return rows;
+}
+
 async function addCategory(name) {
     await pool.query("INSERT INTO category (name) VALUES ($1)", [name])
 }
@@ -36,6 +41,7 @@ module.exports = {
     addItem,
     getItem,
     updateItem,
+    searchedItem,
     getAllCategory,
     addCategory,
 }
