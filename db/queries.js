@@ -24,8 +24,16 @@ async function searchedItem(name) {
     return rows;
 }
 
+async function deleteItem(id) {
+    await pool.query("DELETE FROM category WHERE id = $1", [id]);
+}
+
 async function addCategory(name) {
-    await pool.query("INSERT INTO category (name) VALUES ($1)", [name])
+    await pool.query("INSERT INTO category (name) VALUES ($1)", [name]);
+}
+
+async function deleteCategory(id) {
+    await pool.query("DELETE FROM category WHERE id = $1", [id]);
 }
 
 async function getAllCategory() {
@@ -44,4 +52,5 @@ module.exports = {
     searchedItem,
     getAllCategory,
     addCategory,
+    deleteCategory
 }
